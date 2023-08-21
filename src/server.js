@@ -1,16 +1,13 @@
 const express = require('express');
 const app = express();
-var cors = require('cors')
+const cors = require('cors')
+
+require('./config/database');
 const port = process.env.PORT || 3000;
 
 app.use(cors())
 app.use(express.json());
-
-const rootRouter = require('./routes/root');
-const dnaRouter = require('./routes/dna');
-
-app.use(rootRouter);
-app.use(dnaRouter);
+app.use(require('./routes/index'))
 
 // Manejar rutas no encontradas
 app.use((req, res) => {

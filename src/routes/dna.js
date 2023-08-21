@@ -6,7 +6,7 @@ const ADN = require('../../utils/checkAdn')
 // Servicio "/mutation/"
 router.post('/mutation', (req, res) => {
   const dna = req.body.dna
-  if (dna.length > 0) {
+  if (dna && dna.length > 0) {
     const mutation = new ADN(dna)
     const isMutant = mutation.isMutant()
     const status = isMutant ? 200 : 403
