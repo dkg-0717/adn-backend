@@ -6,8 +6,10 @@ const port = process.env.PORT || 3000;
 app.use(cors())
 app.use(express.json());
 
+const rootRouter = require('./routes/root');
 const dnaRouter = require('./routes/dna');
 
+app.use(rootRouter);
 app.use(dnaRouter);
 
 // Manejar rutas no encontradas
