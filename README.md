@@ -22,7 +22,7 @@ Go to ``http://localhost:3000``. You should see a default welcome page.
 
 Your API base path is ``http://localhost:3000/mutation``.
 
-# API
+# API LOCAL
 
 ### Mutation
 POST  http://localhost:3000/mutation
@@ -38,6 +38,28 @@ POST  http://localhost:3000/mutation
     "TCACTG"
     ]
 }
+```
 
 ### Mutation
 GET  http://localhost:3000/stats
+
+# API PROD
+
+### Mutation
+POST  https://adnbackend-angeljvelascog.b4a.run/mutation
+
+```js
+{
+    "dna":[
+    "ATGCGA",
+    "CAGTGC",
+    "TTATGT",
+    "AGAAGG",
+    "CCCCTA",
+    "TCACTG"
+    ]
+}
+```
+
+### Mutation
+GET  https://adnbackend-angeljvelascog.b4a.run/stats
