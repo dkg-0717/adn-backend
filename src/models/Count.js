@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const countSchema = new mongoose.Schema({
-  no_mutations: { type: Number },
+  nomutations: { type: Number },
 });
 
-module.exports = mongoose.model('Count', countSchema);
+module.exports = mongoose.model('count', countSchema);

@@ -5,15 +5,17 @@ const countSchema = require('../models/Count')
 async function incrementCount() {
   try {
     const mutations = await countSchema.find()
-    console.log(mutations)
     const counter = mutations.length == 0 ? 1 : mutations.no_mutations + 1;
 
     if (counter == 1) {
-      const response = countSchema.save({ no_mutations: counter })
+      const count = countSchema({ nomutations: counter })
+      const response = count.save()
       return response
     } else {
-      const response = countSchema.findOneAndUpdate({ id: mutations._id }, {
-        no_mutations: counter
+      const id = mutations[0]._id.toHexString()
+      console.log(id)
+      const response = countSchema.findByIdAndUpdate({ id }, {
+        nomutations: counter
       })
       return response
     }
