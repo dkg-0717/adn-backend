@@ -16,8 +16,7 @@ router.post('/mutation', async (req, res) => {
       if (!response?.error) {
         console.log(response)
       } else {
-        const response = await incrementCount()
-        // console.log(response)
+        await incrementCount()
       }
     }
 
