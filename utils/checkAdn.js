@@ -1,12 +1,3 @@
-const adn = [
-  "ATGCGA",
-  "CAGTGC",
-  "TTAAGT",
-  "AGAAGG",
-  "CCCTTA",
-  "TCACTG"
-]
-
 class ADN {
   adn = [];
   vertical = [];
@@ -32,8 +23,8 @@ class ADN {
     let y = this.adn[0].length - 1;
     const length = this.adn.length;
     for (i, y; i < length; y--, i++) {
-      this.diagonal[0].push(adn[i][this.initialValue])
-      this.diagonal[1].push(adn[i][y])
+      this.diagonal[0].push(this.adn[i][this.initialValue])
+      this.diagonal[1].push(this.adn[i][y])
       let vertical = ''
       this.initialValue = this.initialValue + 1;
       for (let x = 0; x < length; x++) {
@@ -62,13 +53,18 @@ class ADN {
     return isMutation
   }
 
+  getDnaString() {
+    return this.adn.join('')
+  }
+
   isMutant() {
+    this.getDnaString()
     const horizontal = this.checkHorizontal()
-    if (horizontal.length > 0) return true
+    if (horizontal.length > 0) return { isMutant: true, adn: this.getDnaString() }
     const vertical = this.checkVertical()
-    if (vertical.length > 0) return true
+    if (vertical.length > 0) return { isMutant: true, adn: this.getDnaString() }
     const diagonal = this.checkDiagonalMutation()
-    if (diagonal) return true
+    if (diagonal) return { isMutant: true, adn: this.getDnaString() }
   }
 
 }
